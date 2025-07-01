@@ -1,0 +1,30 @@
+<h1>Create Party</h1>
+<script>
+    function fetchpartydetails(){
+        var url=$("#id_inv_from").attr("data-account-url")
+        var party=$("#id_bill_from").val()
+        if(!party){
+            return;
+        }
+        $.ajax({
+            url:url,
+            data:{'party':'party'},
+            dataType:'json',
+            success:function(data){
+                const partyData=data.party[0];
+                tdssectionValue=partyData.tdsSectionValue;
+                if(tdssectionValue && tdsSectionValue.startsWith("TDS ")){
+                    tdssectionvalue =tdssectionValue.replace("TDS ", "")
+
+                }
+                $("#id_tdssection").val(tdssectionValue).trigger("change");
+                $("#tds_pct").val(party.tds_pct);
+                $("#id_tds_value").css('pointer-events','none').css('background-color','grey')
+                $("#id_tds_section").attr('readonly',true)
+                $("#id_tds_pct").prop('readonly',true)
+                
+
+    }})}
+    $("#id_bill_from").on("keyup onchange onmouseover", fetchpartydetails)
+
+</script>
