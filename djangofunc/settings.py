@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 # new settings
 # new uptodate settings
 # again new setting comes
+# again check it out first
 
 from pathlib import Path
 
